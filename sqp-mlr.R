@@ -58,7 +58,8 @@ system.time( # This will show how long it takes, gives an idea of CV timing
 rel_predicted_test <- predict(mod, newdata = sqp_matrix_test)
 
 # Predict train values
-rel_predicted_train <- predict(mod, newdata = sqp_matrix_train)
+rel_predicted_train <- predict(mod, 
+                               newdata = sqp_matrix_train)
 
 # You can now examine how well test data are predicted, 
 #   for example:
@@ -70,7 +71,12 @@ plot(rel_predicted_test$data %>% mutate_all(plogis))
 # mlr automatically calculates interesting performance measures
 #   for regression, the default is mean squared error (mse). 
 # Here we ask for root-mean squared error and R-squared:
-performance(rel_predicted_test, measures = list(rmse, rsq))
+performance(rel_predicted_test, 
+            measures = list(rmse, rsq))
+
+performance(rel_predicted_train, 
+            measures = list(rmse, rsq))
+
 
 
 # To see which other measures are available:
